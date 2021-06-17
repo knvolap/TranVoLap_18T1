@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listProduct = (List<ModelEF.Model.Product>)ViewBag.ProductsSP;
+}
+
+<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
+    <div id="tg-content" class="tg-content">
+        <div class="tg-products">
+            <div class="tg-sectionhead">
+                <h2><span>Sự lựa chọn của mọi người</span> Sách bán chạy nhất</h2>
+            </div>
+            <div class="tg-featurebook alert" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="tg-featureditm">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
+                            <figure>
+                                <img src="~/Assets/Client/images/img-04.png" alt="image description">
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                            <div class="tg-featureditmcontent">
+                                <div class="tg-themetagbox">
+                                    <span class="tg-themetag">Bán chạy</span>
+                                </div>
+                                <div class="tg-booktitle">
+                                    <h3>
+                                        <a href="javascript:void(0);">
+                                            Thiên đường tung tăng
+                                        </a>
+                                    </h3>
+                                </div>
+                                <span class="tg-bookwriter">
+                                    Tác giả: <a href="javascript:void(0);">
+                                        KN Lập
+                                    </a>
+                                </span>
+                                <span class="tg-stars"><span></span></span>
+                                <div class="tg-priceandbtn">
+                                    <span class="tg-bookprice">
+                                        <ins>170.000 đ</ins>
+
+                                    </span>
+                                    <a class="tg-btn tg-btnstyletwo tg-active"
+                                       href="javascript:void(0);">
+                                        <i class="fa fa-shopping-basket"></i>
+                                        <em>Mua ngay</em>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tg-productgrid">
+                <div class="tg-refinesearch">
+                    <span>Danh sách sản phẩm</span>
+                    <form class="tg-formtheme tg-formsortshoitems">
+                        <fieldset>
+                            <div class="form-group">
+                                <label> </label>
+                                <span class="tg-select">
+                                    <select>
+                                        <option>giá tăng dần</option>
+                                        <option>giá giảm dần</option>
+                                        <option>Sách mới</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label>Show:</label>
+                                <span class="tg-select">
+                                    <select>
+                                        <option>8</option>
+                                        <option>16</option>
+                                        <option>20</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <!--************************************
+                List sản phẩm
+                *************************************-->
+                @foreach (var item in listProduct)
+                {
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                        <div class="tg-postbook">
+                            <figure class="tg-featureimg">
+
+                                <div class="tg-bookimg">
+                                    <div class="tg-frontcover">
+                                        <img src="~/Assets/Client/images/books/sach/@item.Image"
+                                             alt="@item.NameProduct">
+                                    </div>
+                                    @*<div class="tg-backcover">
+                                        <img src="~/Assets/Client/images/books/sach/@item.Image"
+                                             alt="@item.NameProduct">
+                                    </div>*@
+                                </div>
+                                <a class="tg-btnaddtowishlist" href="javascript:void(0);">
+                                    <i class="icon-heart"></i>
+                                    <span>yêu thích</span>
+                                </a>
+                            </figure>
+
+
+                            <div class="tg-postbookcontent">
+                                <div class="tg-themetagbox">
+                                    <span class="tg-themetag">sale</span>
+                                </div>
+                                <div class="tg-booktitle">
+                                    <h3>
+                                        <a href="javascript:void(0);">
+                                            @item.NameProduct
+                                        </a>
+                                    </h3>
+                                </div>
+                                <span class="tg-bookwriter">
+                                    Tác giả: <a href="javascript:void(0);">@item.Author</a>
+                                </span>
+                                <span class="tg-stars"><span></span></span>
+                                <span class="tg-bookprice">
+                                    <ins>@item.UnitCost đ</ins>
+
+                                </span>
+                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <em>Thêm giỏ hàng</em>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+        
+            </div>
+        </div>
+
+        <div class="card-body">
+            <nav class="" aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a href="javascript:void(0);" class="page-link" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                    <li class="page-item active"><a href="javascript:void(0);" class="page-link">1</a></li>
+                    <li class="page-item"><a href="javascript:void(0);" class="page-link">2</a></li>
+                    <li class="page-item"><a href="javascript:void(0);" class="page-link">3</a></li>
+                    <li class="page-item"><a href="javascript:void(0);" class="page-link">4</a></li>
+                    <li class="page-item"><a href="javascript:void(0);" class="page-link">5</a></li>
+                    <li class="page-item"><a href="javascript:void(0);" class="page-link" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

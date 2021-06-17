@@ -1,0 +1,129 @@
+﻿@*@using PagedList.Mvc
+@model PagedList.IPagedList<ModelEF.ViewModel.SanPhamView>*@
+
+@model IEnumerable<ModelEF.ViewModel.SanPhamView>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="app-page-title">
+    <div class="page-title-heading">
+        <div class="page-title-icon">
+            <i class="pe-7s-menu icon-gradient bg-ripe-malin"></i>
+        </div>
+        <div>
+            Quản lý Sản Phẩm
+            <div class="page-title-subheading">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#AlertBox').removeClass('hide');
+        $('#AlertBox').delay(5000).slideUp(500);
+    });
+</script>
+<div class="panel-body">
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+            @TempData["AlertMessage"]
+        </div>
+    }
+</div>
+
+@*Tìm Kiếm nhân viên*@
+@using (Html.BeginForm("Index", "SanPham", FormMethod.Get))
+{
+    <div class="input-group">
+        <input type="search" value="@ViewBag.ChuoiTimKiemSP" name="searchString" class="form-control border-0 bg-light" placeholder="Nhập sản phẩm" aria-describedby="button-addon1">
+        <div class="input-group-append">
+            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+}
+@*Thêm nhân viên*@
+<ul></ul>
+<div class="app-header-left">
+    <ul class="header-menu nav">
+        <li class="btn-group nav-item">
+            <a href="@Url.Action("ThemSanPham","SanPham")" class="nav-link">
+                <i class="nav-link-icon fa fa-edit"></i>
+                Thêm sản phẩm
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="card-body">
+    <table class="mb-0 table table-hover table table-bordered">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã sách
+            </th>
+            <th>
+                Loại sách
+            </th>
+            <th>
+                Tên Sách
+            </th>  
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Giá Bán
+            </th>           
+            <th>
+                Tên tác giả
+            </th>
+            <th>
+                Tình trạng
+            </th>
+            <th>Chức năng</th>
+        </tr>
+        @{var i = 1; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @item.IDProduct 
+                </td>
+                <td>
+                    @item.NameCategory
+                </td>
+                <td>
+                    @item.NameProduct
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.UnitCost
+                </td>
+                <td>
+                    @item.Author
+                </td>
+                <td>
+                    @(item.Status == true ? "Còn hàng" : "Hết hàng")
+                
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Sua", new { id = item.IDProduct }) |
+                    @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.IDProduct }) |
+                    @Html.ActionLink("Xóa", "XoaSP", new { id = item.IDProduct })
+                </td>
+            </tr>
+            i++;
+        }
+    </table>
+   @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiemSP}))*@
+</div>
