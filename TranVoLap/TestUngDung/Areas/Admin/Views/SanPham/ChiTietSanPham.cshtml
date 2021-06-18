@@ -81,17 +81,15 @@
         </dd>
 
     </dl>
-</div>
-<div class="card-body">
-    <dl>
-        <dd>
+   
+    <button class="mb-2 mr-2 btn-transition btn btn-success">
             @Html.ActionLink("Chỉnh sửa", "Sua", new { id = Model.IDProduct })
-        </dd>
-        <dd>
-            @Html.ActionLink("Xem danh sách", "Index")
-        </dd>
-
-    </dl>
+    </button>
+    <ul></ul>
+    <button class="mb-2 mr-2 btn-transition btn btn-outline-info">
+        @Html.ActionLink("Back to List", "Index", new { @class = "mb-2 mr-2 btn btn-success" })
+    </button>
 </div>
-  
 
+
+ 

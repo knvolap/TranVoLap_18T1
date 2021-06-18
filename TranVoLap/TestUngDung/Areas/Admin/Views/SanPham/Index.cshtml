@@ -1,7 +1,10 @@
-﻿@*@using PagedList.Mvc
-@model PagedList.IPagedList<ModelEF.ViewModel.SanPhamView>*@
+﻿@using PagedList;
+@using PagedList.Mvc
+@model PagedList.IPagedList<ModelEF.ViewModel.SanPhamView>
 
-@model IEnumerable<ModelEF.ViewModel.SanPhamView>
+@*@model IEnumerable<ModelEF.ViewModel.SanPhamView>*@
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -57,73 +60,77 @@
     </ul>
 </div>
 
-
-<div class="card-body">
-    <table class="mb-0 table table-hover table table-bordered">
-        <tr>
-            <th>
-                STT
-            </th>
-            <th>
-                Mã sách
-            </th>
-            <th>
-                Loại sách
-            </th>
-            <th>
-                Tên Sách
-            </th>  
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Giá Bán
-            </th>           
-            <th>
-                Tên tác giả
-            </th>
-            <th>
-                Tình trạng
-            </th>
-            <th>Chức năng</th>
-        </tr>
-        @{var i = 1; }
-        @foreach (var item in Model)
-        {
+<ul></ul>
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table class="mb-0 table table-hover table table-bordered">
             <tr>
-                <td>
-                    @i
-                </td>
-                <td>
-                    @item.IDProduct 
-                </td>
-                <td>
-                    @item.NameCategory
-                </td>
-                <td>
-                    @item.NameProduct
-                </td>
-                <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    @item.UnitCost
-                </td>
-                <td>
-                    @item.Author
-                </td>
-                <td>
-                    @(item.Status == true ? "Còn hàng" : "Hết hàng")
-                
-                </td>
-                <td>
-                    @Html.ActionLink("Chỉnh sửa", "Sua", new { id = item.IDProduct }) |
-                    @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.IDProduct }) |
-                    @Html.ActionLink("Xóa", "XoaSP", new { id = item.IDProduct })
-                </td>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Mã sách
+                </th>
+                <th>
+                    Loại sách
+                </th>
+                <th>
+                    Tên Sách
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Giá Bán
+                </th>
+                <th>
+                    Tên tác giả
+                </th>
+                <th>
+                    Tình trạng
+                </th>
+                <th>Chức năng</th>
             </tr>
-            i++;
-        }
-    </table>
-   @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiemSP}))*@
+            @{var i = 1; }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @item.IDProduct
+                    </td>
+                    <td>
+                        @item.NameCategory
+                    </td>
+                    <td>
+                        @item.NameProduct
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @(item.UnitCost.HasValue ? item.UnitCost.Value.ToString("N0") + " đ" : " ")
+                        @*@item.UnitCost*@
+                    </td>
+                    <td>
+                        @item.Author
+                    </td>
+                    <td>
+                        @(item.Status == true ? "Còn hàng" : "Hết hàng")
+
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chỉnh sửa", "Sua", new { id = item.IDProduct }) |
+                        @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.IDProduct }) |
+                        @Html.ActionLink("Xóa", "XoaSP", new { id = item.IDProduct })
+                    </td>
+                </tr>
+                i++;
+            }
+        </table>
+        <ul></ul>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiemSP }))
+    </div>
 </div>

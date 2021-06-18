@@ -1,11 +1,12 @@
 ﻿@model ModelEF.Model.UserAccount
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Thêm người dùng</h2>
+<h2>Chỉnh sửa nhân viên</h2>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -14,7 +15,15 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label for="exampleText" class="">Mã nhân viên</label>
+                @Html.EditorFor(model => model.IDUser, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.IDUser, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleText" class="">Tên tài khoản</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
@@ -22,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="exampleText" class="">Mật khẩu</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
@@ -30,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="exampleText" class="">Số điện thoại</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
@@ -38,29 +47,33 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UserType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="exampleText" class="">Chức vụ</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserType, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="exampleText" class="">Tình trạng</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Tạo mới" class="mb-2 mr-2 btn btn-success" />
+                <input type="submit" value="Chỉnh sửa" class="mb-2 mr-2 btn btn-success" />
             </div>
         </div>
 
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <button class="mb-2 mr-2 btn-transition btn btn-outline-info">
+            @Html.ActionLink("Back to List", "Index", new { @class = "mb-2 mr-2 btn btn-success" })
+        </button>
+    </div>
 </div>

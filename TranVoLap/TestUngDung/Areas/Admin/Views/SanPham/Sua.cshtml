@@ -1,7 +1,7 @@
 ﻿@model ModelEF.Model.Product
 
 @{
-    ViewBag.Title = "ChinhSuaSanPham";
+    ViewBag.Title = "ChinhSua";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -50,12 +50,12 @@
 
     <div class="form-group">
         <div class="col-md-10">
-           <label for="exampleText" class="">Số lượng</label>
+            <label for="exampleText" class="">Số lượng</label>
             @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
         </div>
     </div>
-  
+
     <div class="form-group">
         <div class="col-md-10">
             <label for="exampleText" class="">Giá bán</label>
@@ -73,10 +73,14 @@
         </div>
     </div>
 
-    <div class="col-md-10 ">
-        <label for="exampleText" class="">Mô tả</label>
-        <textarea name="text" id="exampleText" class="form-control">  Nhập nội dung </textarea>
+    <div class="form-group">
+        <div class="col-md-10" name="text" id="exampleText">
+            <label for="exampleText" class="">Mô tả</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
     </div>
+
 
     <h1></h1>
     <div class="form-group">
@@ -92,15 +96,12 @@
         <div class="col-md-10">
             <label for="exampleText" class="">Ảnh sản phẩm</label>
             @Html.EditorFor(model => model.Image, new
-            {
-                htmlAttributes = new
-            { @class = "form-control-file", @name = "file", @id = "exampleFile", @type = "file" }
-            })
-            @*   @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })*@
+            { htmlAttributes = new { @class = "form-control-file", @name = "file", @id = "exampleFile", @type = "file" } })
+
         </div>
     </div>
 
-
+    @*   @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })*@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Cập nhật" class="mb-2 mr-2 btn btn-success" />

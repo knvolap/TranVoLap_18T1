@@ -5,6 +5,19 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+
+<div class="app-page-title">
+    <div class="page-title-heading">
+        <div class="page-title-icon">
+            <i class="pe-7s-menu icon-gradient bg-ripe-malin"></i>
+        </div>
+        <div>
+            Phân loại sách
+            <div class="page-title-subheading">
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(function () {
         $('#AlertBox').removeClass('hide');
@@ -18,18 +31,6 @@
             @TempData["AlertMessage"]
         </div>
     }
-</div>
-<div class="app-page-title">
-    <div class="page-title-heading">
-        <div class="page-title-icon">
-            <i class="pe-7s-menu icon-gradient bg-ripe-malin"></i>
-        </div>
-        <div>
-            Phân loại sách
-            <div class="page-title-subheading">
-            </div>
-        </div>
-    </div>
 </div>
 @*Tìm Kiếm nhân viên*@
 @using (Html.BeginForm("Index", "LoaiSach", FormMethod.Get))
@@ -46,62 +47,65 @@
 <div class="app-header-left">
     <ul class="header-menu nav">
         <li class="btn-group nav-item">
-            <a href="@Url.Action("ThemSanPham", "LoaiSach")" class="nav-link">
+            <a href="@Url.Action("ThemLoaiSach", "LoaiSach")" class="nav-link">
                 <i class="nav-link-icon fa fa-edit"></i>
-                Tạo Mới Tài Khoản
+                Thêm loại sách
             </a>
         </li>
     </ul>
 </div>
 
-
-<div class="card-body">
-    <table class="mb-0 table table-hover table table-bordered">
-        <tr>
-            <th>
-                STT
-            </th>
-            <th>
-                ID Loại Sách
-            </th>
-            <th>
-                Tên loại sách
-            </th>
-            <th>
-                Mô tả
-            </th>
-            <th>
-                Tên nhà phân phối
-            </th>
-            <th></th>
-        </tr>
-        @{ var i = 1;}
-        @foreach (var item in Model)
-        {
-    <tr>
-        <td>
-            @i
-        </td>
-        <td>
-            @item.IDCategory
-        </td>
-        <td>
-            @item.NameCategory
-        </td>
-        <td>
-            @item.Description
-        </td>
-        <td>
-            @item.Supplier
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IDCategory }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IDCategory }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IDCategory })
-        </td>
-    </tr>
-            i++;
-        }
-    </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiemLSP }))
+<ul></ul>
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table class="mb-0 table table-hover table table-bordered">
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    ID Loại Sách
+                </th>
+                <th>
+                    Tên loại sách
+                </th>
+                <th>
+                    Mô tả
+                </th>
+                <th>
+                    Tên nhà phân phối
+                </th>
+                <th></th>
+            </tr>
+            @{ var i = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @item.IDCategory
+                    </td>
+                    <td>
+                        @item.NameCategory
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Supplier
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.IDCategory }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.IDCategory }) |
+                        @Html.ActionLink("Xóa", "Xoa", new { id = item.IDCategory })
+                    </td>
+                </tr>
+                i++;
+            }
+        </table>
+        <ul></ul>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiemLSP }))
+    </div>
 </div>

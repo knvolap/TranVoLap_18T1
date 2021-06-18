@@ -58,12 +58,12 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Extensions\NotificationExtensions.cs" />
+    <Compile Include="Content\Extensions\NotificationExtensions.cs" />
     <Compile Include="ViewModel\LeftMainMenuDao.cs" />
     <Compile Include="DAO\UserDao.cs" />
     <Compile Include="Funtion\DonHangFunction.cs" />
     <Compile Include="Funtion\LoaiSachFuntion.cs" />
-    <Compile Include="Funtion\NguoiDungFunction.cs" />
+    <Compile Include="Funtion\NhanVienFunction.cs" />
     <Compile Include="Funtion\SanPhamFunction.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Product.cs" />
@@ -78,8 +78,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Scripts\jquery-1.9.0.min.map" />
-    <None Include="Views\Shared\_Notifications.cshtml" />
+    <None Include="Content\Scripts\jquery-1.9.0.min.map" />
+    <None Include="Content\Views\Shared\_Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -87,13 +87,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.0.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.0.js" />
-    <Content Include="Scripts\jquery-1.9.0.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\Scripts\bootstrap.js" />
+    <Content Include="Content\Scripts\bootstrap.min.js" />
+    <Content Include="Content\Scripts\jquery-1.9.0.intellisense.js" />
+    <Content Include="Content\Scripts\jquery-1.9.0.js" />
+    <Content Include="Content\Scripts\jquery-1.9.0.min.js" />
+    <Content Include="Content\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\Scripts\jquery.unobtrusive-ajax.min.js" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

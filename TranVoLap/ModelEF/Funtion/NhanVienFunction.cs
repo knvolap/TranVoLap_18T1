@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ModelEF.Funtion
 {
-   public class NguoiDungFunction
+   public class NhanVienFunction
     {
         private TranVoLapContext db = null;
-        public NguoiDungFunction()
+        public NhanVienFunction()
         {
             db = new TranVoLapContext();
         }
@@ -20,7 +20,7 @@ namespace ModelEF.Funtion
             return db.UserAccounts.Where(s => s.IDUser.CompareTo(id) == 0).FirstOrDefault();
         }
 
-        public void ThemND(UserAccount nguoidung)
+        public void ThemNV(UserAccount nguoidung)
         {
             var id = db.UserAccounts.Max(x => x.IDUser);
             string phanDau = id.Substring(0, 2);
@@ -38,10 +38,37 @@ namespace ModelEF.Funtion
             db.SaveChanges();
         }
 
-        public void XoaND(string id)
+        public bool XoaNV(string id)
         {
-            UserAccount nd = GetNhanVienById(id);
-            db.UserAccounts.Remove(nd);
+            try 
+            {
+                var nd = db.UserAccounts.Find(id);
+                
+                db.UserAccounts.Remove(nd);
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+           
+        }
+      
+        public List<UserAccount> GetCategories()
+        {
+            return db.UserAccounts.ToList();
+        }
+
+        //Sửa
+        public void SuaNV(UserAccount nhanvien)
+        {
+            UserAccount nv = GetNhanVienById(nhanvien.IDUser);
+            nv.UserName = nhanvien.UserName;
+            nv.Password = nhanvien.Password;
+            nv.PhoneNumber = nhanvien.PhoneNumber;
+            nv.UserType = nhanvien.UserName;
+            nv.Status = nhanvien.Status;
             db.SaveChanges();
         }
 

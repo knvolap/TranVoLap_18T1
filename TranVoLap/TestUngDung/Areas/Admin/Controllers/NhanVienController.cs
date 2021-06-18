@@ -9,9 +9,9 @@ using System.Web.Mvc;
 
 namespace TestUngDung.Areas.Admin.Controllers
 {
-    public class NguoiDungController : BaseController
+    public class NhanVienController : BaseController
     {
-        NguoiDungFunction _NguoiDung = new NguoiDungFunction();
+        NhanVienFunction _NhanVien = new NhanVienFunction();
         // GET: Admin/NhanVien
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
@@ -22,31 +22,48 @@ namespace TestUngDung.Areas.Admin.Controllers
         }
 
 
-        public ActionResult ThemNguoiDung()
+        public ActionResult ThemNhanVien()
         {
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult ThemNguoiDung(UserAccount nguoidung)
+        public ActionResult ThemNhanVien(UserAccount nhanvien)
         {
             if (ModelState.IsValid)
             {
-                _NguoiDung.ThemND(nguoidung);
+                _NhanVien.ThemNV(nhanvien);
                 SetAlert("Thêm thành công", "success");
                 return RedirectToAction("Index");
             }
-            return View(nguoidung);
+            return View(nhanvien);
         }
         public ActionResult Xoa(string id)
         {
-            _NguoiDung.XoaND(id);
+            _NhanVien.XoaNV(id);
             SetAlert("Xóa thành công", "success");
             return RedirectToAction("Index");
         }
 
 
+        public ActionResult ChiTietNhanVien(string id)
+        {
+            var model = _NhanVien.GetNhanVienById(id);
+            return View(model);
+        }
+        public ActionResult SuaNhanVien(string id)
+        {
+            return View(_NhanVien.GetNhanVienById(id));
+        }
+
+        [HttpPost]
+        public ActionResult SuaNhanVien(UserAccount nguoidung)
+        {
+            _NhanVien.SuaNV(nguoidung);
+            SetAlert("Sửa thành công", "success");
+            return RedirectToAction("Index");
+        }
 
         //public ActionResult Create(UserAccount user)
         //{

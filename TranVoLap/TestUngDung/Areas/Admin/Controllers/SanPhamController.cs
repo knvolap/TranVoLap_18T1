@@ -17,16 +17,10 @@ namespace TestUngDung.Areas.Admin.Controllers
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var sanpham = new SanPhamFunction();
-            var model = sanpham.GetListSanPham( );
+            var model = sanpham.GetListSanPham(searchString,page, pageSize);
             ViewBag.ChuoiTimKiemSP = searchString;
             return View(model);
         }
-
-
-
-
-
-
         public ActionResult ThemSanPham()
         {
             ViewBag.IDCategory = new SelectList(_SanPham.GetCategories(), "IDCategory", "NameCategory");

@@ -1,0 +1,56 @@
+﻿@model ModelEF.Model.Category
+
+@{
+    ViewBag.Title = "ThemLoaiSach";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm loại sách</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+ 
+        <hr />
+        
+        <div class="form-group">
+            <label for="exampleText" class="">Tên loại sách</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NameCategory, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NameCategory, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleText" class="">Mô tả</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleText" class="">Nhà cung cấp</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Supplier, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Supplier, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo mới" class="mb-2 mr-2 btn btn-success" />
+            </div>
+        </div>
+
+    </div>
+}
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <button class="mb-2 mr-2 btn-transition btn btn-outline-info">
+            @Html.ActionLink("Back to List", "Index", new { @class = "mb-2 mr-2 btn btn-success" })
+        </button>
+    </div>
+</div>

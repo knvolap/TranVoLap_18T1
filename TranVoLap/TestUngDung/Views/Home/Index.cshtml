@@ -87,56 +87,61 @@
                 <!--************************************
                 List sản phẩm
                 *************************************-->
-                @foreach (var item in listProduct)
-                {
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <div class="tg-postbook">
-                            <figure class="tg-featureimg">
+                <div class="row" >
+                    @foreach (var item in listProduct)
+                    {
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3" style="height:550px">
+                            <div class="tg-postbook" style="display:flex;min-height:unset;flex-direction: column;height:100%">
+                                <figure class="tg-featureimg" style="display: block">
 
-                                <div class="tg-bookimg">
-                                    <div class="tg-frontcover">
-                                        <img src="~/Assets/Client/images/books/sach/@item.Image"
-                                             alt="@item.NameProduct">
+                                    <div class="tg-bookimg" style="height: 300px;">
+                                        <div class="tg-frontcover" style="height: 100%;">
+                                            <img style="height: 100%; object-fit: cover" src="~/Assets/Client/images/books/sach/@item.Image"
+                                                 alt="@item.NameProduct">
+                                        </div>
+                                        @*<div class="tg-backcover">
+                                <img src="~/Assets/Client/images/books/sach/@item.Image"
+                                     alt="@item.NameProduct">
+                            </div>*@
                                     </div>
-                                    @*<div class="tg-backcover">
-                                        <img src="~/Assets/Client/images/books/sach/@item.Image"
-                                             alt="@item.NameProduct">
-                                    </div>*@
-                                </div>
-                                <a class="tg-btnaddtowishlist" href="javascript:void(0);">
-                                    <i class="icon-heart"></i>
-                                    <span>yêu thích</span>
-                                </a>
-                            </figure>
+                                    <a class="tg-btnaddtowishlist" href="javascript:void(0);">
+                                        <i class="icon-heart"></i>
+                                        <span>yêu thích</span>
+                                    </a>
+                                </figure>
 
 
-                            <div class="tg-postbookcontent">
-                                <div class="tg-themetagbox">
-                                    <span class="tg-themetag">sale</span>
-                                </div>
-                                <div class="tg-booktitle">
-                                    <h3>
-                                        <a href="javascript:void(0);">
-                                            @item.NameProduct
-                                        </a>
-                                    </h3>
-                                </div>
-                                <span class="tg-bookwriter">
-                                    Tác giả: <a href="javascript:void(0);">@item.Author</a>
-                                </span>
-                                <span class="tg-stars"><span></span></span>
-                                <span class="tg-bookprice">
-                                    <ins>@item.UnitCost đ</ins>
+                                <div class="tg-postbookcontent" style="flex:1; display:flex; flex-direction: column">
+                                    <div class="tg-postbookcontent-box" style="display:flex;flex-direction: column;flex:1;">
+                                        <div class="tg-themetagbox">
+                                            <span class="tg-themetag">sale</span>
+                                        </div>
+                                        <div class="tg-booktitle" style="flex: 1">
+                                            <h3 >
+                                                <a style="max-height: 40px; font-size:16px; line-height:20px; overflow: hidden;display:-webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:2"  href="javascript:void(0);">
+                                                    @item.NameProduct
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <span class="tg-bookwriter" style="margin-bottom:5px ;max-height: 18px; font-size:13px; line-height:18px; overflow: hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">
+                                            Tác giả: <a href="javascript:void(0);">@item.Author</a>
+                                        </span>
+                                        <span class="tg-stars"><span></span></span>
+                                        <span class="tg-bookprice" style="display:block;margin-top:5px ;max-height: 18px; font-size:13px; line-height:18px; overflow: hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">
+                                            <ins>@item.UnitCost đ</ins>
 
-                                </span>
-                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <em>Thêm giỏ hàng</em>
-                                </a>
+                                        </span>
+                                        <div style="clear:both"></div>
+                                    </div>
+                                    <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                        <i class="fa fa-shopping-basket"></i>
+                                        <em>Thêm giỏ hàng</em>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
 
         
             </div>

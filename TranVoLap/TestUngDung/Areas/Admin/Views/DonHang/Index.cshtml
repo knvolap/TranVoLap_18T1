@@ -55,89 +55,93 @@
 </div>-->
 <ul></ul>
 
-<div class="card-body">
-    <table class="mb-0 table table-hover table table-bordered">
-        <tr>
-            <th>
-                STT
-            </th>
-            <th>
-                Mã đơn hàng
-            </th>
-            <th>
-                Mã sản phẩm
-            </th>
-            <th>
-                Tên người mua
-            </th>
-            <th>
-                Số điện thoại
-            </th>
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Tổng tiền
-            </th>
-            <th>
-                Ngày mua
-            </th>
-            <th>
-                Địa chỉ
-            </th>
-            <th>
-                Tình trạng
-            </th>
-            <th>
-                Chức năng
-            </th>
-            <th></th>
-        </tr>
-        @{var i = 1; }
-        @foreach (var item in Model)
-        {
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table class="mb-0 table table-hover table table-bordered">
             <tr>
-                <td>
-                    @i
-                </td>
-                <td>
-                    @item.IDOder
-                </td>
-                <td>
-                    @item.IDProduct
-                </td>
-                <td>
-                    @item.UserName
-                </td>
-                <td>
-                    @item.PhoneNumber
-                </td>
-                <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    @item.Amount
-                </td>
-                <td>
-                    @item.DayBuy
-                </td>
-                <td>
-                    @item.Address
-                </td>
-                <td>
-                    <button class="mb-2 mr-2 btn btn-danger">
-                        @(item.Status == true ? "Đã duyệt" : "Chưa duyệt")
-                    </button>
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IDOder }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IDOder }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IDOder })
-                </td>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Mã đơn hàng
+                </th>
+                <th>
+                    Mã sản phẩm
+                </th>
+                <th>
+                    Tên người mua
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Tổng tiền
+                </th>
+                <th>
+                    Ngày mua
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Tình trạng
+                </th>
+                <th>
+                    Chức năng
+                </th>
+                <th></th>
             </tr>
-            i++;
-        }
-    </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiemDH }))
+            @{var i = 1; }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @item.IDOder
+                    </td>
+                    <td>
+                        @item.IDProduct
+                    </td>
+                    <td>
+                        @item.UserName
+                    </td>
+                    <td>
+                        @item.PhoneNumber
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.Amount
+                    </td>
+                    <td>
+                        @item.DayBuy
+                    </td>
+                    <td>
+                        @item.Address
+                    </td>
+                    <td>
+                        <button class="mb-2 mr-2 btn btn-danger">
+                            @(item.Status == true ? "Đã duyệt" : "Chưa duyệt")
+                        </button>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IDOder }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IDOder }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IDOder })
+                    </td>
+                </tr>
+                i++;
+            }
+        </table>
+        <ul></ul>
 
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiemDH }))
+
+    </div>
 </div>

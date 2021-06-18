@@ -19,14 +19,14 @@ namespace ModelEF.Funtion
 
 
         //Tìm kiếm sản phẩm + phân trang
-        //public List<Product> ListAll()
-        //{
-        //    return db.Products.ToList();
-        //}
-        //public object GetListSanPham(string searchString, int page)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
+        public List<Product> ListAll()
+        {
+            return db.Products.ToList();
+        }
+        public object GetListSanPham(string searchString, int page)
+        {
+            throw new System.NotImplementedException();
+        }
         //public IEnumerable<Product> GetListSanPham(string keysearch, int page, int pagesize)
         //{
         //    IEnumerable<Product> model = db.Products;
@@ -36,7 +36,7 @@ namespace ModelEF.Funtion
         //    }
         //    return model.OrderByDescending(x => x.IDProduct).ToPagedList(page, pagesize);
         //}
-        public List<SanPhamView> GetListSanPham()
+        public IEnumerable<SanPhamView> GetListSanPham(string keysearch, int page, int pagesize)
         {
             var query = from sp in db.Products
                         join c in db.Categories on sp.IDCategory equals c.IDCategory
@@ -54,9 +54,15 @@ namespace ModelEF.Funtion
                 Status = x.sp.Status,
                 IDCategory = x.c.IDCategory,
                 NameCategory = x.c.NameCategory,
-
-            }).ToList();
+            }).OrderBy(x => x.Quantity).ThenByDescending(q => q.UnitCost).ToPagedList(page, pagesize);
             return result;
+
+            IEnumerable<Product> model = db.Products;
+            if (!string.IsNullOrEmpty(keysearch))
+            {
+                model = model.Where(x => x.IDProduct.Contains(keysearch) || x.IDCategory.Contains(keysearch) || x.NameProduct.Contains(keysearch));
+            }
+            return result.OrderByDescending(x => x.IDProduct).ToPagedList(page, pagesize);
         }
 
         //chi tiết sản phẩm
@@ -93,17 +99,25 @@ namespace ModelEF.Funtion
         //Sửa
         public void SuaSP(Product sanpham)
         {
-            Product sp = GetSanPhamById(sanpham.IDProduct);
-            sp.IDCategory = sanpham.IDCategory;
-            sp.NameProduct = sanpham.NameProduct;
-            sp.MetaName = sanpham.MetaName;
-            sp.Quantity = sanpham.Quantity;
-            sp.UnitCost = sanpham.UnitCost;
-            sp.Image = sanpham.Image;
-            sp.Author = sanpham.Author;
-            sp.Description = sanpham.Description;
-            sp.Status = sanpham.Status;
-            db.SaveChanges();
+            try
+            {
+                Product sp = GetSanPhamById(sanpham.IDProduct);
+                sp.IDCategory = sanpham.IDCategory;
+                sp.NameProduct = sanpham.NameProduct;
+                sp.MetaName = sanpham.MetaName;
+                sp.Quantity = sanpham.Quantity;
+                sp.UnitCost = sanpham.UnitCost;
+                sp.Image = sanpham.Image;
+                sp.Author = sanpham.Author;
+                sp.Description = sanpham.Description;
+                sp.Status = sanpham.Status;
+                db.SaveChanges();
+            }
+            catch
+            {
+                Console.WriteLine("Nhập sai vui lòng lập lại" );
+            }
+       
         }
 
         //xóa sản phẩm
@@ -113,7 +127,7 @@ namespace ModelEF.Funtion
             db.Products.Remove(nd);
             db.SaveChanges();
         }
-      
-       
+
+
     }
 }
