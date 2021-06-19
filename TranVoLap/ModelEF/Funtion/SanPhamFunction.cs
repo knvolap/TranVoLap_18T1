@@ -27,15 +27,7 @@ namespace ModelEF.Funtion
         {
             throw new System.NotImplementedException();
         }
-        //public IEnumerable<Product> GetListSanPham(string keysearch, int page, int pagesize)
-        //{
-        //    IEnumerable<Product> model = db.Products;
-        //    if (!string.IsNullOrEmpty(keysearch))
-        //    {
-        //        model = model.Where(x => x.IDProduct.Contains(keysearch) || x.IDCategory.Contains(keysearch) || x.NameProduct.Contains(keysearch));
-        //    }
-        //    return model.OrderByDescending(x => x.IDProduct).ToPagedList(page, pagesize);
-        //}
+       
         public IEnumerable<SanPhamView> GetListSanPham(string keysearch, int page, int pagesize)
         {
             var query = from sp in db.Products
@@ -56,7 +48,6 @@ namespace ModelEF.Funtion
                 NameCategory = x.c.NameCategory,
             }).OrderBy(x => x.Quantity).ThenByDescending(q => q.UnitCost).ToPagedList(page, pagesize);
             return result;
-
             IEnumerable<Product> model = db.Products;
             if (!string.IsNullOrEmpty(keysearch))
             {
@@ -96,6 +87,8 @@ namespace ModelEF.Funtion
             db.Products.Add(sanpham1);
             db.SaveChanges();
         }
+
+
         //Sửa
         public void SuaSP(Product sanpham)
         {
@@ -116,8 +109,7 @@ namespace ModelEF.Funtion
             catch
             {
                 Console.WriteLine("Nhập sai vui lòng lập lại" );
-            }
-       
+            }      
         }
 
         //xóa sản phẩm
@@ -128,6 +120,6 @@ namespace ModelEF.Funtion
             db.SaveChanges();
         }
 
-
+        
     }
 }

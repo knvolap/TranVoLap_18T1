@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelEF.ViewModel
-{
-   
+{ 
     public class HienThiSPDao
     {
         private TranVoLapContext db = null;
@@ -15,7 +14,6 @@ namespace ModelEF.ViewModel
         {
             db = new TranVoLapContext();
         }
-
         public List<Product> ListALLProduct()
         {
             return db.Products.ToList();
@@ -23,9 +21,6 @@ namespace ModelEF.ViewModel
         public Product ListALLProduct(string id)
         {
             return db.Products.Where(s => s.IDProduct.CompareTo(id) == 0).FirstOrDefault();
-
         }
-
-    }
-   
+    }  
 }

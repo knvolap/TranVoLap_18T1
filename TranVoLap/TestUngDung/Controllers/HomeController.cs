@@ -15,15 +15,7 @@ namespace TestUngDung.Controllers
             ViewBag.ProductsSP = hienthiSPDao.ListALLProduct();
             return View();
         }
-
-        //[ChildActionOnly]
-        //public PartialViewResult Index()
-        //{
-        //    var model = new HienThiSPDao().ListALLProduct();
-        //    return PartialView(model);
-        //}
-
-
+ 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

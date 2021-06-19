@@ -1,13 +1,9 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<ModelEF.Model.UserAccount>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-
-
 <div class="app-page-title">
     <div class="page-title-heading">
         <div class="page-title-icon">
@@ -113,9 +109,6 @@
                         <button class="mb-2 mr-2 btn-transition btn btn-outline-info">
                             @(item.Status == true ? "Unlock" : "Blocked")
                         </button>
-                        @*<button class="mb-2 mr-2 btn btn-success">
-                                Đã kích hoạt
-                            </button>*@
                     </td>
                     <td>
                         @Html.ActionLink("Chỉnh sửa", "SuaNhanVien", new { id = item.IDUser }) |
@@ -128,6 +121,5 @@
         </table>
         <ul></ul>
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiem }))
-
     </div>
 </div>

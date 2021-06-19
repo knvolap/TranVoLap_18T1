@@ -15,7 +15,6 @@ namespace ModelEF.DAO
         {
             db = new TranVoLapContext();
         }
-
         public int login(string UserName, string password)
         {
             var result = db.UserAccounts.FirstOrDefault(x => x.UserName == UserName.Trim());
@@ -37,15 +36,13 @@ namespace ModelEF.DAO
                     {
                         //Vừa đúng use name & mật khẩu vừa status == false
                         return -1;
-                    }
-                    //Đúng cảcuser name và pass
+                    }                   
                 }
                 else
                 {
                     //Sai mật khẩu
                     return -2;
                 }
-
             }
         }
 
@@ -54,7 +51,6 @@ namespace ModelEF.DAO
         {
             return db.UserAccounts.ToList();
         }
-
         public object ListAllPaging(string searchString, int page)
         {
             throw new System.NotImplementedException();

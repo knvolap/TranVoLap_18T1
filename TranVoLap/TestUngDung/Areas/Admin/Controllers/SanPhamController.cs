@@ -21,6 +21,7 @@ namespace TestUngDung.Areas.Admin.Controllers
             ViewBag.ChuoiTimKiemSP = searchString;
             return View(model);
         }
+
         public ActionResult ThemSanPham()
         {
             ViewBag.IDCategory = new SelectList(_SanPham.GetCategories(), "IDCategory", "NameCategory");

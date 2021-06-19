@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "TrangChu";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var listProduct = (List<ModelEF.Model.Product>)ViewBag.ProductsSP;
@@ -128,7 +127,7 @@
                                         </span>
                                         <span class="tg-stars"><span></span></span>
                                         <span class="tg-bookprice" style="display:block;margin-top:5px ;max-height: 18px; font-size:13px; line-height:18px; overflow: hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">
-                                            <ins>@item.UnitCost đ</ins>
+                                            <ins>  @(item.UnitCost.HasValue ? item.UnitCost.Value.ToString("N0") + " đ" : " ") </ins>
 
                                         </span>
                                         <div style="clear:both"></div>

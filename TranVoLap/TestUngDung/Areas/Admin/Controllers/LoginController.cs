@@ -27,13 +27,13 @@ namespace TestUngDung.Areas.Admin.Controllers
                 var user = new UserDao();
 
                 var result = user.login(login.Accounts, Common.EncryptMD5(login.Password));
-                if (result == 0)//đăng nhập thành công
+                if (result == 0)
                 {
                     this.AddNotification("Tài khoản không tồn tại", NotificationType.ERROR);
                 }
-                else if (result == 1)
+                else if (result == 1)//đăng nhập thành công
                 {
-           
+          
                     //kiểm tra khi đăng nhập -> trả về tên người dùng
                     Session.Add(Constants.USER_SESSION, login);
                     return RedirectToAction("Index", "Home");

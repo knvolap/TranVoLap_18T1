@@ -19,6 +19,21 @@ namespace ModelEF.Funtion
         {
             return db.UserAccounts.Where(s => s.IDUser.CompareTo(id) == 0).FirstOrDefault();
         }
+        public bool XoaNV(string id)
+        {
+            try
+            {
+                var nd = db.UserAccounts.Find(id);
+
+                db.UserAccounts.Remove(nd);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public void ThemNV(UserAccount nguoidung)
         {
@@ -38,22 +53,7 @@ namespace ModelEF.Funtion
             db.SaveChanges();
         }
 
-        public bool XoaNV(string id)
-        {
-            try 
-            {
-                var nd = db.UserAccounts.Find(id);
-                
-                db.UserAccounts.Remove(nd);
-                db.SaveChanges();
-                return true;
-            }
-            catch(Exception)
-            {
-                return false;
-            }
-           
-        }
+       
       
         public List<UserAccount> GetCategories()
         {

@@ -65,23 +65,5 @@ namespace TestUngDung.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        //public ActionResult Create(UserAccount user)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        var dao = new UserDao();
-        //        long id = dao.Insert(user);
-        //        if(id>0)
-        //        {
-        //            return RedirectToAction("Index", "User");
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Thêm người dùng thất bại");
-        //        }
-        //    }
-        //    return View("Create");
-        //}
-
     }
 }
