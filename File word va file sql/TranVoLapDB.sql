@@ -61,12 +61,12 @@ CREATE TABLE Product(
 go
 INSERT INTO dbo.Product
 			(IDProduct,IDCategory,NameProduct,MetaName,Quantity,UnitCost,Image,Author,Description,Status)
-VALUES		('SP01','TL01',N'Sa môn Không Hải thết yến bầy quỷ Đại Đường ','sa-mon-khong-hai-thet-yen-bay-quy-dai','50000','10','http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2018/9/26/IVFUNACP.jpg',N' Yumemakura Baku',N'Nhà sư trẻ tuổi Không Hải, cùng người bạn thân Quất Dật Thế, từ Nhật Bản xa xôi vượt biển tới Đại Đường với tư cách sứ thần sang du học. Vào thời đại đó','1'),
-			('SP02','TL01',N'CUỘC TRỐN CHẠY CỦA JOSEF MENGELE ','cuoc-tron-chay-cua-josef-mengele','60000','10','http://nhanam.com.vn/sach/19136/cuoc-tron-chay-cua-josef-mengele',N' Olivier Guez',N'Cái ác liệu có khi nào không phải đền tội? Mặc dù đã chạy trốn sang Mĩ Latinh','1'),
-			('SP03','TL01',N'TẮT ĐÈN','tat-den','47000','10','http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2018/9/26/IVFUNACP.jpg',N' Ngô Tất Tố',N'Đánh ‘xoảng’ một cái, cái bát ở mâm lý cựu bay thẳng sang mâm lý đương. Và đánh ‘chát’ một cái, cái chậu ở chiếu lý đương cũng đập luôn vào cây cột bên cạnh lý cựu.','1'),
-			('SP04','TL02',N'Mua vé số vào ngày nào thì dễ trúng?','mua-ve-so-vao-ngay-nao-thi-de-trung','60000','10','http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2018/9/26/IVFUNACP.jpg',N' Rob Eastaway , Jeremy Wyndham',N'Bạn lại vừa phải trải qua một ngày thứ Hai điển hình… Buổi sáng bạn quên đun nước pha cà phê trước khi đánh răng ','1'),
-			('SP05','TL02',N'ĐÊM NÚM SEN','dem-num-sen','80000','10','http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2018/9/26/IVFUNACP.jpg',N'Trần Dần',N'Ba giờ đêm, dưới phố, lại lào xào một cuộc hành binh dài dặc, về làng','1'),
-			('SP06','TL03',N'NGỤY','nguy','50000','10','http://nhanam.com.vn/sach/5049/nguy',N'Nguyễn Trí.',N'Vì mày mà mẹ mày mới chết và rồi đây con mày, nếu tao chết nó sẽ ra sao? Tao hận trời xanh, hận cha tao đã đẻ tao ra trên cõi đời này… Mày tệ quá Độ ơi','1')
+VALUES		('SP01','TL01',N'Sa môn Không Hải thết yến bầy quỷ Đại Đường ','sa-mon-khong-hai-thet-yen-bay-quy-dai','50000','10','HGMZBLFI.jpg ',N' Yumemakura Baku',N'Nhà sư trẻ tuổi Không Hải, cùng người bạn thân Quất Dật Thế, từ Nhật Bản xa xôi vượt biển tới Đại Đường với tư cách sứ thần sang du học. Vào thời đại đó','1'),
+			('SP02','TL01',N'CUỘC TRỐN CHẠY CỦA JOSEF MENGELE ','cuoc-tron-chay-cua-josef-mengele','60000','10','HGMZBLFI.jpg',N' Olivier Guez',N'Cái ác liệu có khi nào không phải đền tội? Mặc dù đã chạy trốn sang Mĩ Latinh','1'),
+			('SP03','TL01',N'TẮT ĐÈN','tat-den','47000','10','HGMZBLFI.jpg',N' Ngô Tất Tố',N'Đánh ‘xoảng’ một cái, cái bát ở mâm lý cựu bay thẳng sang mâm lý đương. Và đánh ‘chát’ một cái, cái chậu ở chiếu lý đương cũng đập luôn vào cây cột bên cạnh lý cựu.','1'),
+			('SP04','TL02',N'Mua vé số vào ngày nào thì dễ trúng?','mua-ve-so-vao-ngay-nao-thi-de-trung','60000','10','HGMZBLFI.jpg',N' Rob Eastaway , Jeremy Wyndham',N'Bạn lại vừa phải trải qua một ngày thứ Hai điển hình… Buổi sáng bạn quên đun nước pha cà phê trước khi đánh răng ','1'),
+			('SP05','TL02',N'ĐÊM NÚM SEN','dem-num-sen','80000','10','HGMZBLFI.jpg',N'Trần Dần',N'Ba giờ đêm, dưới phố, lại lào xào một cuộc hành binh dài dặc, về làng','1'),
+			('SP06','TL03',N'NGỤY','nguy','50000','10','HGMZBLFI.jpg',N'Nguyễn Trí.',N'Vì mày mà mẹ mày mới chết và rồi đây con mày, nếu tao chết nó sẽ ra sao? Tao hận trời xanh, hận cha tao đã đẻ tao ra trên cõi đời này… Mày tệ quá Độ ơi','1')
 go
 
 CREATE TABLE UserOder(

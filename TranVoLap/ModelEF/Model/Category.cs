@@ -15,6 +15,7 @@ namespace ModelEF.Model
             Products = new HashSet<Product>();
         }
 
+        [Required(ErrorMessage = "Vui long chon loai sach")]
         [Key]
         [StringLength(30)]
         public string IDCategory { get; set; }

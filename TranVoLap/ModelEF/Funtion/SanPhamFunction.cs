@@ -33,6 +33,10 @@ namespace ModelEF.Funtion
             var query = from sp in db.Products
                         join c in db.Categories on sp.IDCategory equals c.IDCategory
                         select new { sp, c };
+            if (!string.IsNullOrEmpty(keysearch))
+            {
+                query = query.Where(x => x.sp.IDProduct.Contains(keysearch) || x.sp.IDCategory.Contains(keysearch) || x.sp.NameProduct.Contains(keysearch));
+            }
             var result = query.Select(x => new SanPhamView()
             {
                 IDProduct = x.sp.IDProduct,
@@ -48,12 +52,6 @@ namespace ModelEF.Funtion
                 NameCategory = x.c.NameCategory,
             }).OrderBy(x => x.Quantity).ThenByDescending(q => q.UnitCost).ToPagedList(page, pagesize);
             return result;
-            IEnumerable<Product> model = db.Products;
-            if (!string.IsNullOrEmpty(keysearch))
-            {
-                model = model.Where(x => x.IDProduct.Contains(keysearch) || x.IDCategory.Contains(keysearch) || x.NameProduct.Contains(keysearch));
-            }
-            return result.OrderByDescending(x => x.IDProduct).ToPagedList(page, pagesize);
         }
 
         //chi tiết sản phẩm
@@ -92,24 +90,17 @@ namespace ModelEF.Funtion
         //Sửa
         public void SuaSP(Product sanpham)
         {
-            try
-            {
-                Product sp = GetSanPhamById(sanpham.IDProduct);
-                sp.IDCategory = sanpham.IDCategory;
-                sp.NameProduct = sanpham.NameProduct;
-                sp.MetaName = sanpham.MetaName;
-                sp.Quantity = sanpham.Quantity;
-                sp.UnitCost = sanpham.UnitCost;
-                sp.Image = sanpham.Image;
-                sp.Author = sanpham.Author;
-                sp.Description = sanpham.Description;
-                sp.Status = sanpham.Status;
-                db.SaveChanges();
-            }
-            catch
-            {
-                Console.WriteLine("Nhập sai vui lòng lập lại" );
-            }      
+            Product sp = GetSanPhamById(sanpham.IDProduct);
+            sp.IDCategory = sanpham.IDCategory;
+            sp.NameProduct = sanpham.NameProduct;
+            sp.MetaName = sanpham.MetaName;
+            sp.Quantity = sanpham.Quantity;
+            sp.UnitCost = sanpham.UnitCost;
+            sp.Image = sanpham.Image;
+            sp.Author = sanpham.Author;
+            sp.Description = sanpham.Description;
+            sp.Status = sanpham.Status;
+            db.SaveChanges();   
         }
 
         //xóa sản phẩm

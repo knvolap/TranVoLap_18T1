@@ -30,7 +30,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <label for="exampleText" class="">Thể loại sách</label>
-                @Html.DropDownList("IdCategory", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdCategory", ViewBag.IdCategory as SelectList, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDCategory, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -90,17 +90,8 @@
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
         <button class="mb-2 mr-2 btn-transition btn btn-outline-info">
-            @Html.ActionLink("Back to List", "Index", new { @class = "mb-2 mr-2 btn btn-success" })
+            @Html.ActionLink("Quay lại danh sách", "Index", new { @class = "mb-2 mr-2 btn btn-success" })
         </button>
     </div>
 </div>
 
-@*<div>
-        @Html.ActionLink("Back to List", "Index", new { @class = "mb-2 mr-2 btn btn-success" })
-    </div>*@
-
-@*<div class="col-md-10 form-group">
-        <label for="exampleFile" class="form-group">File</label>
-        <input name="file" id="exampleFile" type="file" class="form-control-file">
-        <small class="form-text text-muted">Nên có ảnh minh họa cho các sản phẩm.</small>
-    </div>*@

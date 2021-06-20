@@ -39,7 +39,7 @@ namespace ModelEF.Model
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.MetaName)
-                .IsUnicode(false);
+                .IsUnicode(false).IsRequired();
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Image)
@@ -57,6 +57,10 @@ namespace ModelEF.Model
             modelBuilder.Entity<UserAccount>()
                 .Property(e => e.UserName)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Author)
+                .IsUnicode(false).IsRequired();
 
             modelBuilder.Entity<UserAccount>()
                 .Property(e => e.Password)

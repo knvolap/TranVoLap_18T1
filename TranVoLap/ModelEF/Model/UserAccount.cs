@@ -1,4 +1,4 @@
-namespace ModelEF.Model
+﻿namespace ModelEF.Model
 {
     using System;
     using System.Collections.Generic;
@@ -13,18 +13,18 @@ namespace ModelEF.Model
         [StringLength(30)]
         public string IDUser { get; set; }
 
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Nhập tên tài khoản")]
         [StringLength(30)]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Nhập mật khẩu")]
         [StringLength(30)]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Nhập số điện thoại")]
         [StringLength(10)]
         public string PhoneNumber { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        
         public bool? Status { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Nhập chức vụ")]
         [StringLength(30)]
         public string UserType { get; set; }
     }

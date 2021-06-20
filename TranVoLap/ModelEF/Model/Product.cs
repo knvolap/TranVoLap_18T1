@@ -1,4 +1,4 @@
-namespace ModelEF.Model
+﻿namespace ModelEF.Model
 {
     using System;
     using System.Collections.Generic;
@@ -18,29 +18,31 @@ namespace ModelEF.Model
         [Key]
         [StringLength(30)]
         public string IDProduct { get; set; }
-        
+                                 
         [StringLength(30)]
         public string IDCategory { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Chưa nhập tên sản phẩm")]
         [StringLength(200)]
         public string NameProduct { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Chưa nhập tên sản phẩm")]
         [StringLength(200)]
         public string MetaName { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Range(0, int.MaxValue, ErrorMessage = "Vui lòng nhập số lượng > 0")]
+        [Required(ErrorMessage = "Chưa nhập nhập số lượng ")]
         public int? Quantity { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Range(0, int.MaxValue, ErrorMessage = "Vui lòng nhập giá tiền > 0")]
+        [Required(ErrorMessage = "Chưa nhậpg nhập giá tiền")]
         public double? UnitCost { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Chưa chọn ảnh")]
         [StringLength(100)]
         public string Image { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Chưa nhập tên tác giả")]
         [StringLength(200)]
         public string Author { get; set; }
         
         [StringLength(300)]
         public string Description { get; set; }
-        [Required(ErrorMessage = "Vui long nhap noi dung")]
+        [Required(ErrorMessage = "Chọn tình trạng sản phẩm")]
         public bool? Status { get; set; }
      
         public virtual Category Category { get; set; }

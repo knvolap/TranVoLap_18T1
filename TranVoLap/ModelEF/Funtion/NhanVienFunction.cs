@@ -63,14 +63,22 @@ namespace ModelEF.Funtion
         //Sửa
         public void SuaNV(UserAccount nhanvien)
         {
-            UserAccount nv = GetNhanVienById(nhanvien.IDUser);
-            nv.UserName = nhanvien.UserName;
-            nv.Password = nhanvien.Password;
-            nv.PhoneNumber = nhanvien.PhoneNumber;
-            nv.UserType = nhanvien.UserName;
-            nv.Status = nhanvien.Status;
-            db.SaveChanges();
+            try
+            {
+                UserAccount nv = GetNhanVienById(nhanvien.IDUser);
+                nv.UserName = nhanvien.UserName;
+                nv.Password = nhanvien.Password;
+                nv.PhoneNumber = nhanvien.PhoneNumber;
+                nv.UserType = nhanvien.UserName;
+                nv.Status = nhanvien.Status;
+                db.SaveChanges();
+            }
+            catch  
+            {
+                Console.WriteLine("Cập nhật thất bại");
+            }
+        }
         }
 
     }
-}
+
