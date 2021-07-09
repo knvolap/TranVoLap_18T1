@@ -1,10 +1,8 @@
 ﻿namespace ModelEF.Model
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Product")]
     public partial class Product
@@ -18,24 +16,31 @@
         [Key]
         [StringLength(30)]
         public string IDProduct { get; set; }
-                                 
+
+     
         [StringLength(30)]
         public string IDCategory { get; set; }
-        [Required(ErrorMessage = "Chưa nhập tên sản phẩm")]
+
+        [Required(ErrorMessage = "Chưa nhập tên sách")]
         [StringLength(200)]
         public string NameProduct { get; set; }
-        [Required(ErrorMessage = "Chưa nhập tên sản phẩm")]
+
+        [Required(ErrorMessage = "Chưa nhập tên sách")]
         [StringLength(200)]
         public string MetaName { get; set; }
+
         [Range(0, int.MaxValue, ErrorMessage = "Vui lòng nhập số lượng > 0")]
         [Required(ErrorMessage = "Chưa nhập nhập số lượng ")]
         public int? Quantity { get; set; }
+
         [Range(0, int.MaxValue, ErrorMessage = "Vui lòng nhập giá tiền > 0")]
-        [Required(ErrorMessage = "Chưa nhậpg nhập giá tiền")]
+        [Required(ErrorMessage = "Chưa nhập nhập giá tiền")]
         public double? UnitCost { get; set; }
+
         [Required(ErrorMessage = "Chưa chọn ảnh")]
         [StringLength(100)]
         public string Image { get; set; }
+
         [Required(ErrorMessage = "Chưa nhập tên tác giả")]
         [StringLength(200)]
         public string Author { get; set; }

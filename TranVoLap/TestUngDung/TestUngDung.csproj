@@ -168,7 +168,9 @@
     <Content Include="Assets\Admin\images\logo-inverse2.png" />
     <Content Include="Assets\Admin\images\logo.png" />
     <Content Include="Assets\Admin\images\logo2.png" />
+    <Content Include="Assets\Admin\scripts\userController.js" />
     <Content Include="Assets\Admin\scripts\main.js" />
+    <Content Include="Assets\Admin\scripts\userCTL.js" />
     <Content Include="Assets\Client\css\bootstrap.min.css" />
     <Content Include="Assets\Client\css\color-purple.css" />
     <Content Include="Assets\Client\css\color.css" />

@@ -19,22 +19,7 @@ namespace ModelEF.Funtion
         {
             return db.UserAccounts.Where(s => s.IDUser.CompareTo(id) == 0).FirstOrDefault();
         }
-        public bool XoaNV(string id)
-        {
-            try
-            {
-                var nd = db.UserAccounts.Find(id);
-
-                db.UserAccounts.Remove(nd);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
+       
         public void ThemNV(UserAccount nguoidung)
         {
             var id = db.UserAccounts.Max(x => x.IDUser);
@@ -69,7 +54,7 @@ namespace ModelEF.Funtion
                 nv.UserName = nhanvien.UserName;
                 nv.Password = nhanvien.Password;
                 nv.PhoneNumber = nhanvien.PhoneNumber;
-                nv.UserType = nhanvien.UserName;
+                nv.UserType = nhanvien.UserType;
                 nv.Status = nhanvien.Status;
                 db.SaveChanges();
             }
@@ -78,7 +63,23 @@ namespace ModelEF.Funtion
                 Console.WriteLine("Cập nhật thất bại");
             }
         }
+        public bool XoaNV(string id)
+        {
+            try
+            {
+                var nd = db.UserAccounts.Find(id);
+
+                db.UserAccounts.Remove(nd);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
     }
+
+}
 

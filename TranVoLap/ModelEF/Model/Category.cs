@@ -15,10 +15,11 @@ namespace ModelEF.Model
             Products = new HashSet<Product>();
         }
 
-        [Required(ErrorMessage = "Vui long chon loai sach")]
+        
         [Key]
         [StringLength(30)]
         public string IDCategory { get; set; }
+
         [Required(ErrorMessage = "Vui long nhap noi dung")]
         [StringLength(200)]
         public string NameCategory { get; set; }

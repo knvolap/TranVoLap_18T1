@@ -104,11 +104,11 @@
                         @item.NameProduct
                     </td>
                     <td>
-                        @item.Quantity
+                        @(item.Quantity.HasValue ? item.Quantity.Value.ToString() : "")
                     </td>
                     <td>
                         @(item.UnitCost.HasValue ? item.UnitCost.Value.ToString("N0") + " đ" : " ")
-
+                        @*nếu có giá trị thì in ra còn k thì bỏ trống /định dạng / hỗ trợ cho float, int*@
                     </td>
                     <td>
                         @item.Author

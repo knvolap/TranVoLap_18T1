@@ -66,25 +66,6 @@ namespace ModelEF.DAO
         }
 
 
-        ////Tìm kiếm sản phẩm + phân trang
-        //public List<Product> ListAllSP()
-        //{
-        //    return db.Products.ToList();
-        //}
-        //public object ListAllPagingSP(string searchString, int page)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-        //public IEnumerable<Product> ListAllPagingSP(string keysearch, int page, int pagesize)
-        //{
-        //    IEnumerable<Product> model = db.Products;
-        //    if (!string.IsNullOrEmpty(keysearch))
-        //    {
-        //        model = model.Where(x => x.IDProduct.Contains(keysearch) || x.IDCategory.Contains(keysearch) || x.NameProduct.Contains(keysearch));
-        //    }
-        //    return model.OrderByDescending(x => x.IDProduct).ToPagedList(page, pagesize);
-        //}
-
       
 
         //Tìm kiếm đơn hàng + phân trang
@@ -106,23 +87,15 @@ namespace ModelEF.DAO
             return model.OrderByDescending(x => x.IDOder).ToPagedList(page, pagesize);
         }
 
-        ////Tìm kiếm loại sách + phân trang
-        //public List<Category> ListAllLSP()
+        
+
+
+        //public bool ChangeStatus(long id)
         //{
-        //    return db.Categories.ToList();
-        //}
-        //public object ListAllPagingLSP(string searchString, int page)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-        //public IEnumerable<Category> ListAllPagingLSP(string keysearch, int page, int pagesize)
-        //{
-        //    IEnumerable<Category> model = db.Categories;
-        //    if (!string.IsNullOrEmpty(keysearch))
-        //    {
-        //        model = model.Where(x => x.IDCategory.Contains(keysearch) || x.NameCategory.Contains(keysearch));
-        //    }
-        //    return model.OrderByDescending(x => x.IDCategory).ToPagedList(page, pagesize);
+        //    var user = db.UserAccounts.Find(id);
+        //    user.Status = !user.Status;
+        //    db.SaveChanges();
+        //    return user.Status;
         //}
     }
 }

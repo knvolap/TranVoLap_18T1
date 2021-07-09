@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+
 <div class="app-page-title">
     <div class="page-title-heading">
         <div class="page-title-icon">
@@ -107,13 +109,16 @@
                     </td>
                     <td>
                         <button class="mb-2 mr-2 btn-transition btn btn-outline-info">
-                            @(item.Status == true ? "Unlock" : "Blocked")
+                            @(item.Status == true ? "Active" : "Blocked")
                         </button>
                     </td>
                     <td>
                         @Html.ActionLink("Chỉnh sửa", "SuaNhanVien", new { id = item.IDUser }) |
                         @Html.ActionLink("Chi tiết", "Details", new { id = item.IDUser }) |
-                        @Html.ActionLink("Xóa", "Xoa", new { id = item.IDUser })
+                        @if (item.Status == false)
+                        {
+                            @Html.ActionLink("Xóa", "Xoa", new { id = item.IDUser })
+                        }
                     </td>
                 </tr>
                 i++;
@@ -123,3 +128,8 @@
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.ChuoiTimKiem }))
     </div>
 </div>
+
+@*<script src="~/Assets/Admin/js/userController.js"></script>*@
+@*<a href="#" class="btn-active" data-id="@item.IDUser">
+        @Html.Raw(item.Status ? "Kích hoạt" : "Khoá")
+    </a>*@

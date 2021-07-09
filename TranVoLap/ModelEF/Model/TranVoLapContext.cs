@@ -37,13 +37,17 @@ namespace ModelEF.Model
                 .Property(e => e.IDCategory)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Product>()
-                .Property(e => e.MetaName)
-                .IsUnicode(false).IsRequired();
+            //modelBuilder.Entity<Product>()
+            //    .Property(e => e.MetaName)
+            //    .IsUnicode(false).IsRequired();
 
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Image)
-                .IsUnicode(false);
+            //modelBuilder.Entity<Product>()
+            //    .Property(e => e.Image)
+            //    .IsUnicode(false);
+
+            //modelBuilder.Entity<Product>()
+            //    .Property(e => e.Author)
+            //    .IsUnicode(false).IsRequired();
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.UserOders)
@@ -58,9 +62,6 @@ namespace ModelEF.Model
                 .Property(e => e.UserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Author)
-                .IsUnicode(false).IsRequired();
 
             modelBuilder.Entity<UserAccount>()
                 .Property(e => e.Password)

@@ -24,7 +24,7 @@ namespace TestUngDung.Areas.Admin.Controllers
 
         public ActionResult ThemSanPham()
         {
-            ViewBag.IdCategory = new SelectList(_SanPham.GetCategories(), "IDCategory", "NameCategory");
+            ViewBag.IDCategory = new SelectList(_SanPham.GetCategories(), "IDCategory", "NameCategory");
             return View();
         }
 
@@ -37,30 +37,36 @@ namespace TestUngDung.Areas.Admin.Controllers
                 SetAlert("Thêm thành công", "success");
                 return RedirectToAction("Index");
             }
+            else
+            {
+                SetAlert("Thêm thất bại", "error");
+                return RedirectToAction("Index");
+            }
             return View(sanpham);
         }
 
         //sửa sản phẩm
         public ActionResult Sua(string id)
         {
-            ViewBag.IdCategory = new SelectList(_SanPham.GetCategories(), "IDCategory", "NameCategory");
+            ViewBag.IDCategory = new SelectList(_SanPham.GetCategories(), "IDCategory", "NameCategory");
             return View(_SanPham.GetSanPhamById(id));
         }
 
         [HttpPost]
         public ActionResult Sua(Product sanpham)
         {
-            try
+            if (ModelState.IsValid)
             {
                 _SanPham.SuaSP(sanpham);
-                SetAlert("Sửa thành công", "success");
+                SetAlert("Chỉnh sửa thành công", "success");
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                SetAlert("Thực hiện thất bại", "success");
-                return View();
+                SetAlert("Chỉnh sửa thất bại", "warning");
+                return RedirectToAction("Index");
             }
+            return View(sanpham);
         }
 
         public ActionResult ChiTietSanPham(string id)

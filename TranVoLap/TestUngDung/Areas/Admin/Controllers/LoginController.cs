@@ -27,7 +27,7 @@ namespace TestUngDung.Areas.Admin.Controllers
                 var user = new UserDao();
 
                 var result = user.login(login.Accounts, Common.EncryptMD5(login.Password));
-                if (result == 0)
+            2206    if (result == 0)
                 {
                     this.AddNotification("Tài khoản không tồn tại", NotificationType.ERROR);
                 }

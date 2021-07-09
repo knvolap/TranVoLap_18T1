@@ -43,7 +43,7 @@ namespace ModelEF.Funtion
 
         public void ThemLS(Category loaisach)
         {
-            var id = db.UserAccounts.Max(x => x.IDUser);
+            var id = db.Categories.Max(x => x.IDCategory);
             string phanDau = id.Substring(0, 2);
             int so = Convert.ToInt32(id.Substring(2, 2)) + 1;
             var loaisach1 = new Category()

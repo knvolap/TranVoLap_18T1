@@ -18,25 +18,24 @@ namespace ModelEF.Funtion
         }
 
 
-        //Tìm kiếm sản phẩm + phân trang
+    
         public List<Product> ListAll()
         {
             return db.Products.ToList();
         }
-        public object GetListSanPham(string searchString, int page)
-        {
-            throw new System.NotImplementedException();
-        }
-       
+
+        //Tìm kiếm sản phẩm + phân trang
         public IEnumerable<SanPhamView> GetListSanPham(string keysearch, int page, int pagesize)
         {
             var query = from sp in db.Products
                         join c in db.Categories on sp.IDCategory equals c.IDCategory
                         select new { sp, c };
+            //check từ khóa có tồn tại hay k
             if (!string.IsNullOrEmpty(keysearch))
             {
                 query = query.Where(x => x.sp.IDProduct.Contains(keysearch) || x.sp.IDCategory.Contains(keysearch) || x.sp.NameProduct.Contains(keysearch));
             }
+            //tạo biến result -> hiển thị sp ->           
             var result = query.Select(x => new SanPhamView()
             {
                 IDProduct = x.sp.IDProduct,
@@ -111,6 +110,9 @@ namespace ModelEF.Funtion
             db.SaveChanges();
         }
 
-        
+        public object GetListSanPham(string searchString, int page)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
